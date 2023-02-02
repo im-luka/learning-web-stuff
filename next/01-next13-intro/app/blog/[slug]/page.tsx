@@ -1,3 +1,5 @@
+import Counter from "./counter";
+
 export async function generateStaticParams() {
   return [
     {
@@ -10,6 +12,7 @@ export default function IndividualBlogPage() {
   return (
     <div>
       <h1>A Live Stream</h1>
+      <Counter />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae
         odio sapiente voluptatibus vel molestias facilis, dolorum, quas beatae
