@@ -1,0 +1,36 @@
+import { Form } from "@components/Form";
+import { Layout } from "@components/Layout";
+
+export const meta = {
+  author: "Luka Lux",
+};
+
+# My MDX page
+
+This is a list in markdown:
+
+- One
+- Two
+- Three
+
+---
+
+<h1>H1 heading</h1>
+
+<h2>H2 heading</h2>
+
+<p>This is a list in markdown:</p>
+
+<ul>
+  <li>One</li>
+  <li>Two</li>
+  <li>Three</li>
+</ul>
+
+Checkout my React component:
+
+<Form />
+
+export default ({ children }) => (
+  <MyLayoutComponent meta={meta}>{children}</MyLayoutComponent>
+);
