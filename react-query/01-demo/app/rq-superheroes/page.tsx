@@ -1,6 +1,7 @@
 "use client";
 
 import { useSuperheroes } from "@/hooks/use-superheroes";
+import Link from "next/link";
 
 export default function RQSuperHeroesPage() {
   const onSuccess = (data: any) => console.log("Query run successfully!", data);
@@ -30,13 +31,20 @@ export default function RQSuperHeroesPage() {
       </button>
       <div>
         {/* 👉🏼 untransformed data */}
-        {/* {data?.map((el: any) => (
-          <p key={el.id}>{el.name}</p>
-        ))} */}
-        {/* 👉🏼 transformed data with - option "select" */}
         {data?.map((el: any) => (
-          <p key={el}>{el}</p>
+          <div key={el.id} className="mb-2 p-4 bg-emerald-400 rounded-sm">
+            <Link
+              href={`rq-superheroes/${el.id}`}
+              className="text-lg font-semibold italic text-slate-900"
+            >
+              {el.name}
+            </Link>
+          </div>
         ))}
+        {/* 👉🏼 transformed data with - option "select" */}
+        {/* {data?.map((el: any) => (
+          <p key={el}>{el}</p>
+        ))} */}
       </div>
     </>
   );
