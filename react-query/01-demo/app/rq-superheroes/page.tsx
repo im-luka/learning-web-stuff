@@ -6,10 +6,17 @@ import { useQuery } from "@tanstack/react-query";
 const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
 
 export default function RQSuperHeroesPage() {
-  const { data, isLoading } = useQuery(["superheroes"], fetchHeroes);
+  const { data, isLoading, error, isError } = useQuery(
+    ["superheroes"],
+    fetchHeroes
+  );
 
   if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p className="text-red-500">{(error as any).message}</p>;
   }
 
   return (

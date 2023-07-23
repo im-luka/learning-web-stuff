@@ -5,17 +5,28 @@ import { useEffect, useState } from "react";
 
 export default function SuperHeroesPage() {
   const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [data, setData] = useState<any>({});
 
   useEffect(() => {
-    api.get("superheroes").then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-    });
+    api
+      .get("superheroes")
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setIsLoading;
+      });
   }, []);
 
   if (isLoading) {
     return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <h1 className="text-xl text-red-500">ERROR</h1>;
   }
 
   return (
