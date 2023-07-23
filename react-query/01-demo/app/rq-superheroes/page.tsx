@@ -10,8 +10,8 @@ export default function RQSuperHeroesPage() {
     ["superheroes"],
     fetchHeroes,
     {
-      refetchOnMount: true,
-      refetchOnWindowFocus: true,
+      refetchInterval: 2000,
+      refetchIntervalInBackground: true,
     }
   );
 
