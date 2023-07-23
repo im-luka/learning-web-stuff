@@ -9,7 +9,10 @@ export default function RQSuperHeroesPage() {
   const { data, isLoading, error, isError } = useQuery(
     ["superheroes"],
     fetchHeroes,
-    { staleTime: 30000 }
+    {
+      refetchOnMount: true,
+      refetchOnWindowFocus: true,
+    }
   );
 
   if (isLoading) {
