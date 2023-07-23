@@ -8,7 +8,8 @@ const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
 export default function RQSuperHeroesPage() {
   const { data, isLoading, error, isError } = useQuery(
     ["superheroes"],
-    fetchHeroes
+    fetchHeroes,
+    { cacheTime: 5000 }
   );
 
   if (isLoading) {
