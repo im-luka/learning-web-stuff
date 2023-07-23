@@ -6,17 +6,16 @@ import { useQuery } from "@tanstack/react-query";
 const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
 
 export default function RQSuperHeroesPage() {
-  const { data, isLoading, error, isError } = useQuery(
+  const { data, isFetching, error, isError, refetch } = useQuery(
     ["superheroes"],
     fetchHeroes,
     {
-      refetchInterval: 2000,
-      refetchIntervalInBackground: true,
+      enabled: false,
     }
   );
 
-  if (isLoading) {
-    return <p>Loading...</p>;
+  if (isFetching) {
+    return <p>Fetching...</p>;
   }
 
   if (isError) {
@@ -26,8 +25,14 @@ export default function RQSuperHeroesPage() {
   return (
     <>
       <h2 className="text-4xl">RQ Super Heroes Page</h2>
+      <button
+        className="my-4 px-8 py-2 border border-pink-400 text-pink-400"
+        onClick={() => refetch()}
+      >
+        Fetch Heroes
+      </button>
       <div>
-        {data.map((el: any) => (
+        {data?.map((el: any) => (
           <p key={el.id}>{el.name}</p>
         ))}
       </div>
