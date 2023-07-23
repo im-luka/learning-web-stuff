@@ -1,22 +1,15 @@
 "use client";
 
-import { api } from "@/domain/remote";
-import { useQuery } from "@tanstack/react-query";
-
-const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
+import { useSuperheroes } from "@/hooks/use-superheroes";
+import Link from "next/link";
 
 export default function RQSuperHeroesPage() {
   const onSuccess = (data: any) => console.log("Query run successfully!", data);
   const onError = (err: any) => console.log("Error when running query!.", err);
 
-  const { data, isFetching, error, isError, refetch } = useQuery(
-    ["superheroes"],
-    fetchHeroes,
-    {
-      onSuccess,
-      onError,
-      // select: (data) => data.map((el: any) => el.name),
-    }
+  const { data, isFetching, isError, error, refetch } = useSuperheroes(
+    onSuccess,
+    onError
   );
 
   if (isFetching) {
@@ -37,8 +30,16 @@ export default function RQSuperHeroesPage() {
         Fetch Heroes
       </button>
       <div>
+        {/* 👉🏼 untransformed data */}
         {data?.map((el: any) => (
-          <p key={el.id}>{el.name}</p>
+          <div key={el.id} className="mb-2 p-4 bg-emerald-400 rounded-sm">
+            <Link
+              href={`rq-superheroes/${el.id}`}
+              className="text-lg font-semibold italic text-slate-900"
+            >
+              {el.name}
+            </Link>
+          </div>
         ))}
         {/* 👉🏼 transformed data with - option "select" */}
         {/* {data?.map((el: any) => (
