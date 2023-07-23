@@ -6,12 +6,13 @@ import { useQuery } from "@tanstack/react-query";
 const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
 
 export default function RQSuperHeroesPage() {
+  const onSuccess = (data: any) => console.log("Query run successfully!", data);
+  const onError = (err: any) => console.log("Error when running query!.", err);
+
   const { data, isFetching, error, isError, refetch } = useQuery(
     ["superheroes"],
     fetchHeroes,
-    {
-      enabled: false,
-    }
+    { onSuccess, onError }
   );
 
   if (isFetching) {
