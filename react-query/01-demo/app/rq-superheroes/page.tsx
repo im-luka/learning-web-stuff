@@ -12,7 +12,11 @@ export default function RQSuperHeroesPage() {
   const { data, isFetching, error, isError, refetch } = useQuery(
     ["superheroes"],
     fetchHeroes,
-    { onSuccess, onError }
+    {
+      onSuccess,
+      onError,
+      // select: (data) => data.map((el: any) => el.name),
+    }
   );
 
   if (isFetching) {
@@ -36,6 +40,10 @@ export default function RQSuperHeroesPage() {
         {data?.map((el: any) => (
           <p key={el.id}>{el.name}</p>
         ))}
+        {/* 👉🏼 transformed data with - option "select" */}
+        {/* {data?.map((el: any) => (
+          <p key={el}>{el}</p>
+        ))} */}
       </div>
     </>
   );
