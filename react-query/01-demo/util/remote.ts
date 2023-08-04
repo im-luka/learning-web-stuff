@@ -21,3 +21,12 @@ export const getUsers = async () => {
   const data = await getData().then((res: any) => res.users);
   return data;
 };
+
+export const getColors = async (page: number) => {
+  const data = await getData().then((res: any) => res.colors);
+
+  const limit = 2;
+  const paginatedData = data.slice(page * limit - limit, page * limit);
+
+  return paginatedData;
+};
