@@ -12,6 +12,8 @@ import { Container } from "./_components/container";
 import { LoggedIn } from "./_components/logged-in";
 import { User } from "./_components/user";
 import { Counter } from "./_components/counter";
+import { ThemeContextProvider } from "./_components/context/theme-context";
+import { Box } from "./_components/context/box";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -73,6 +75,11 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Counter />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <ThemeContextProvider>
+          <Box />
+        </ThemeContextProvider>
       </div>
     </div>
   );
