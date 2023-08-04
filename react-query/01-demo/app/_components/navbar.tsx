@@ -13,6 +13,15 @@ export const Navbar: FC = () => {
       <div>
         <Link href="/rq-superheroes">RQ Superheroes</Link>
       </div>
+      <div>
+        <Link href="/rq-dependent">RQ Dependent</Link>
+      </div>
+      <div>
+        <Link href="/rq-paginated">RQ Paginated</Link>
+      </div>
+      <div>
+        <Link href="/rq-infinite">RQ Infinite</Link>
+      </div>
     </nav>
   );
 };

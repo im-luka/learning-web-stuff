@@ -27,7 +27,61 @@
     },
     {
       "id": 3,
-      "name": "Rachel Green"
+      "name": "Monica Geller"
+    }
+  ],
+  "users": [
+    {
+      "id": "luka-dusak",
+      "channelId": "hi-im-luka"
+    },
+    {
+      "id": "dusak-luka",
+      "channelId": "my-name-is-dusak"
+    }
+  ],
+  "channels": [
+    {
+      "id": "hi-im-luka",
+      "courses": ["react", "tailwind", "typescript"]
+    },
+    {
+      "id": "my-name-is-dusak",
+      "courses": ["photography", "videography", "editing"]
+    }
+  ],
+  "colors": [
+    {
+      "id": 1,
+      "label": "red"
+    },
+    {
+      "id": 2,
+      "label": "blue"
+    },
+    {
+      "id": 3,
+      "label": "green"
+    },
+    {
+      "id": 4,
+      "label": "yellow"
+    },
+    {
+      "id": 5,
+      "label": "black"
+    },
+    {
+      "id": 6,
+      "label": "white"
+    },
+    {
+      "id": 7,
+      "label": "orange"
+    },
+    {
+      "id": 8,
+      "label": "purple"
     }
   ]
 }

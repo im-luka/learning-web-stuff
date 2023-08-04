@@ -17,7 +17,7 @@ export default function SuperHeroesPage() {
       })
       .catch((err) => {
         setError(err.message);
-        setIsLoading;
+        setIsLoading(false);
       });
   }, []);
 
