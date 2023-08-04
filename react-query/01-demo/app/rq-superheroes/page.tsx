@@ -1,16 +1,27 @@
 "use client";
 
-import { useSuperheroes } from "@/hooks/use-superheroes";
+import { useAddSuperhero, useSuperheroes } from "@/hooks/use-superheroes";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function RQSuperHeroesPage() {
+  const [name, setName] = useState("");
+  const [alterEgo, setAlterEgo] = useState("");
+
   const onSuccess = (data: any) => console.log("Query run successfully!", data);
   const onError = (err: any) => console.log("Error when running query!.", err);
+
+  const { mutate } = useAddSuperhero();
 
   const { data, isFetching, isError, error, refetch } = useSuperheroes(
     onSuccess,
     onError
   );
+
+  const handleAddHero = () => {
+    const hero = { name, alterEgo };
+    mutate(hero);
+  };
 
   if (isFetching) {
     return <p>Fetching...</p>;
@@ -45,6 +56,30 @@ export default function RQSuperHeroesPage() {
         {/* {data?.map((el: any) => (
           <p key={el}>{el}</p>
         ))} */}
+      </div>
+
+      <div className="mt-8">
+        <p className="text-2xl mb-2">Add a Super Hero</p>
+        <div className="flex flex-col items-start gap-3">
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="text-slate-800"
+          />
+          <input
+            type="text"
+            value={alterEgo}
+            onChange={(e) => setAlterEgo(e.target.value)}
+            className="text-slate-800"
+          />
+          <button
+            className="px-4 py-1 border border-red-500"
+            onClick={handleAddHero}
+          >
+            Add!
+          </button>
+        </div>
       </div>
     </>
   );
