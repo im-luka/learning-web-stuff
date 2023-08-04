@@ -1,5 +1,5 @@
 import { api } from "@/domain/remote";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const fetchHero = ({ queryKey }: { queryKey: any }) => {
   const [, id] = queryKey;
@@ -7,8 +7,19 @@ const fetchHero = ({ queryKey }: { queryKey: any }) => {
 };
 
 export const useSuperhero = (id: string, onSuccess: any, onError: any) => {
+  const qc = useQueryClient();
+
   return useQuery(["superheroes", id], fetchHero, {
     onSuccess,
     onError,
+    initialData: () => {
+      const hero = qc
+        .getQueryData<any[]>(["superheroes"])
+        ?.find((hero) => hero.id === parseInt(id));
+      if (!hero) {
+        return undefined;
+      }
+      return hero;
+    },
   });
 };
