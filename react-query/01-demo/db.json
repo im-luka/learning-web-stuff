@@ -29,5 +29,25 @@
       "id": 3,
       "name": "Monica Geller"
     }
+  ],
+  "users": [
+    {
+      "id": "luka-dusak",
+      "channelId": "hi-im-luka"
+    },
+    {
+      "id": "dusak-luka",
+      "channelId": "my-name-is-dusak"
+    }
+  ],
+  "channels": [
+    {
+      "id": "hi-im-luka",
+      "courses": ["react", "tailwind", "typescript"]
+    },
+    {
+      "id": "my-name-is-dusak",
+      "courses": ["photography", "videography", "editing"]
+    }
   ]
 }
