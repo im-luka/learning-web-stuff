@@ -9,6 +9,7 @@ import { Heading } from "./_components/heading";
 import { Button } from "./_components/button";
 import { Input } from "./_components/input";
 import { Container } from "./_components/container";
+import { LoggedIn } from "./_components/logged-in";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -61,6 +62,9 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Container styles={{ border: "1px solid green", padding: "1.25rem" }} />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <LoggedIn />
       </div>
     </div>
   );
