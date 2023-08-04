@@ -11,6 +11,7 @@ import { Input } from "./_components/input";
 import { Container } from "./_components/container";
 import { LoggedIn } from "./_components/logged-in";
 import { User } from "./_components/user";
+import { Counter } from "./_components/counter";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -69,6 +70,9 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <User />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Counter />
       </div>
     </div>
   );
