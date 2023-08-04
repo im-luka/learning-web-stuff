@@ -14,6 +14,8 @@ import { User } from "./_components/user";
 import { Counter } from "./_components/counter";
 import { ThemeContextProvider } from "./_components/context/theme-context";
 import { Box } from "./_components/context/box";
+import { UserContextProvider } from "./_components/context/user-context";
+import { User as User2 } from "./_components/context/user";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -80,6 +82,11 @@ export default function HomePage() {
         <ThemeContextProvider>
           <Box />
         </ThemeContextProvider>
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <UserContextProvider>
+          <User2 />
+        </UserContextProvider>
       </div>
     </div>
   );
