@@ -8,6 +8,7 @@ import { Status } from "./_components/status";
 import { Heading } from "./_components/heading";
 import { Button } from "./_components/button";
 import { Input } from "./_components/input";
+import { Container } from "./_components/container";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -57,6 +58,9 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Input value="" onChange={(e) => console.log(e.target.value)} />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Container styles={{ border: "1px solid green", padding: "1.25rem" }} />
       </div>
     </div>
   );
