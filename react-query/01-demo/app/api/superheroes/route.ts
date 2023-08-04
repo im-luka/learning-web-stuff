@@ -8,6 +8,6 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const data = await request.json();
-  console.log(data);
-  return NextResponse.json({ message: "OK!" });
+  const heroes = await getSuperheroes();
+  return NextResponse.json({ ...data, id: heroes.length + 1 });
 }

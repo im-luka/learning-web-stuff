@@ -17,6 +17,12 @@ export const useAddSuperhero = () => {
   const qc = useQueryClient();
 
   return useMutation(addHero, {
-    onSuccess: () => qc.invalidateQueries(["superheroes"]),
+    // onSuccess: () => qc.invalidateQueries(["superheroes"]),
+    onSuccess: (data: any) => {
+      qc.setQueryData(["superheroes"], (oldData: any) => [
+        ...oldData,
+        data.data,
+      ]);
+    },
   });
 };
