@@ -1,14 +1,14 @@
+import { Person as PersonType } from "@/types/Person";
+import { FC } from "react";
+
 type Props = {
-  name: {
-    first: string;
-    last: string;
-  };
+  person: PersonType;
 };
 
-export const Person = (props: Props) => {
+export const Person: FC<Props> = ({ person }) => {
   return (
     <p>
-      {props.name.first} {props.name.last}
+      {person.firstName} {person.lastName}
     </p>
   );
 };

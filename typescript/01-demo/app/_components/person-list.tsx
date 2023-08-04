@@ -1,16 +1,16 @@
+import { Person } from "@/types/Person";
+import { FC } from "react";
+
 type Props = {
-  names: {
-    first: string;
-    last: string;
-  }[];
+  people: Person[];
 };
 
-export const PersonList = (props: Props) => {
+export const PersonList: FC<Props> = ({ people }) => {
   return (
     <div>
-      {props.names.map((name, i: number) => (
+      {people.map((person, i: number) => (
         <h3 key={i}>
-          {name.first} {name.last}
+          {person.firstName} {person.lastName}
         </h3>
       ))}
     </div>

@@ -1,25 +1,26 @@
+import { Person as PersonType } from "@/types/Person";
 import { Greet } from "./_components/greet";
 import { Person } from "./_components/person";
 import { PersonList } from "./_components/person-list";
 
 export default function HomePage() {
-  const name = {
-    first: "Michael",
-    last: "Jackson",
+  const person: PersonType = {
+    firstName: "Michael",
+    lastName: "Jackson",
   };
 
-  const names = [
+  const people: PersonType[] = [
     {
-      first: "The",
-      last: "Rock",
+      firstName: "The",
+      lastName: "Rock",
     },
     {
-      first: "Robbie",
-      last: "Williams",
+      firstName: "Robbie",
+      lastName: "Williams",
     },
     {
-      first: "Babe",
-      last: "Ruth",
+      firstName: "Babe",
+      lastName: "Ruth",
     },
   ];
 
@@ -33,10 +34,10 @@ export default function HomePage() {
         <Greet name="Mike" messageCount={3} isLoggedIn={false} />
       </div>
       <div className="py-5 border-b border-b-blue-400">
-        <Person name={name} />
+        <Person person={person} />
       </div>
       <div className="py-5 border-b border-b-blue-400">
-        <PersonList names={names} />
+        <PersonList people={people} />
       </div>
     </div>
   );
