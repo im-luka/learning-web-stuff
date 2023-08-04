@@ -1,13 +1,21 @@
 import { useState } from "react";
 
-export const LoggedIn = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+type User = {
+  name: string;
+  email: string;
+};
+
+export const User = () => {
+  const [user, setUser] = useState<User | null>(null);
 
   const handleLogin = () => {
-    setIsLoggedIn(true);
+    setUser({
+      name: "luka",
+      email: "luka@mail.com",
+    });
   };
   const handleLogout = () => {
-    setIsLoggedIn(false);
+    setUser(null);
   };
 
   return (
@@ -16,7 +24,8 @@ export const LoggedIn = () => {
         <button onClick={handleLogin}>Login</button>
         <button onClick={handleLogout}>Logout</button>
       </div>
-      <div>User is logged {isLoggedIn ? "in" : "out"}</div>
+      <p>User name is {user?.name}</p>
+      <p>User email is {user?.email}</p>
     </div>
   );
 };
