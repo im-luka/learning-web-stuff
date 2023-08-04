@@ -1,5 +1,5 @@
 import { api } from "@/domain/remote";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const fetchHeroes = () => api.get("superheroes").then((res) => res.data);
 
@@ -14,5 +14,9 @@ export const useSuperheroes = (onSuccess: any, onError: any) => {
 };
 
 export const useAddSuperhero = () => {
-  return useMutation(addHero);
+  const qc = useQueryClient();
+
+  return useMutation(addHero, {
+    onSuccess: () => qc.invalidateQueries(["superheroes"]),
+  });
 };
