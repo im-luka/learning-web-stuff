@@ -2,11 +2,11 @@ import { FC } from "react";
 
 type Props = {
   name: string;
-  messageCount: number;
+  messageCount?: number;
   isLoggedIn: boolean;
 };
 
-export const Greet: FC<Props> = ({ name, messageCount, isLoggedIn }) => {
+export const Greet: FC<Props> = ({ name, messageCount = 0, isLoggedIn }) => {
   return (
     <div>
       <h2>
