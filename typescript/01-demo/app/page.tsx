@@ -1,9 +1,13 @@
+"use client";
+
 import { Person as PersonType } from "@/types/Person";
 import { Greet } from "./_components/greet";
 import { Person } from "./_components/person";
 import { PersonList } from "./_components/person-list";
 import { Status } from "./_components/status";
 import { Heading } from "./_components/heading";
+import { Button } from "./_components/button";
+import { Input } from "./_components/input";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -47,6 +51,12 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Heading>This is a heading.!</Heading>
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Button onClick={() => alert("Im clicked!")} />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Input value="" onChange={(e) => console.log(e.target.value)} />
       </div>
     </div>
   );
