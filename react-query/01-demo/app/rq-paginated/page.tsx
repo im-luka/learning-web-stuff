@@ -25,6 +25,7 @@ export default function RQPaginatedPage() {
 
   return (
     <>
+      <h1 className="text-xl mb-5">RQ Paginated Queries</h1>
       <div>
         {data.map((color: any) => (
           <div key={color.id}>
