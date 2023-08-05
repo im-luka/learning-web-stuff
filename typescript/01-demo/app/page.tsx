@@ -16,6 +16,18 @@ import { ThemeContextProvider } from "./_components/context/theme-context";
 import { Box } from "./_components/context/box";
 import { UserContextProvider } from "./_components/context/user-context";
 import { User as User2 } from "./_components/context/user";
+import { DomRef } from "./_components/ref/dom-ref";
+import { MutableRef } from "./_components/ref/mutable-ref";
+import { Counter as CounterClass } from "./_components/class/counter";
+import { Private } from "./_components/auth/private";
+import { Profile } from "./_components/auth/profile";
+import { List } from "./_components/generics/list";
+import { RandomNumber } from "./_components/restriction/random-number";
+import { Toast } from "./_components/template-literals/toast";
+import { Button as ButtonHTML } from "./_components/html/button";
+import { Input as InputHTML } from "./_components/html/input";
+import { CustomComponent } from "./_components/html/custom-component";
+import { Text } from "./_components/polymorphic/text";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -87,6 +99,63 @@ export default function HomePage() {
         <UserContextProvider>
           <User2 />
         </UserContextProvider>
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <DomRef />
+        <MutableRef />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <CounterClass message="this is a timer with count: " />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Private isLoggedIn component={Profile} />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        {/* <List
+          items={["a", "b", "c"]}
+          onClick={(item) => alert(`${item} is clicked`)}
+        />
+        <List
+          items={[1, 2, 3, 4, 5]}
+          onClick={(item) => alert(`${item} is clicked`)}
+        /> */}
+        <List
+          items={[
+            { id: 1, name: "mike" },
+            { id: 2, name: "john" },
+            { id: 3, name: "joe" },
+          ]}
+          onClick={(item) => alert(`${item.name} is clicked`)}
+        />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <RandomNumber value={10} isPositive />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Toast position="center" />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <ButtonHTML
+          variant="primary"
+          onClick={() => console.log("im clicked hey")}
+        >
+          COME ON & CLICK
+        </ButtonHTML>
+        <InputHTML />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <CustomComponent name="franz" messageCount={3} isLoggedIn />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Text as="h1" size="lg">
+          Heading
+        </Text>
+        <Text as="p" size="md">
+          Paragraph
+        </Text>
+        <Text as="label" htmlFor="someId" size="sm" color="secondary">
+          Label
+        </Text>
       </div>
     </div>
   );
