@@ -19,6 +19,8 @@ import { User as User2 } from "./_components/context/user";
 import { DomRef } from "./_components/ref/dom-ref";
 import { MutableRef } from "./_components/ref/mutable-ref";
 import { Counter as CounterClass } from "./_components/class/counter";
+import { Private } from "./_components/auth/private";
+import { Profile } from "./_components/auth/profile";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -97,6 +99,9 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <CounterClass message="this is a timer with count: " />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Private isLoggedIn component={Profile} />
       </div>
     </div>
   );
