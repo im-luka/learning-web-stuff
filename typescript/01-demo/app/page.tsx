@@ -16,6 +16,9 @@ import { ThemeContextProvider } from "./_components/context/theme-context";
 import { Box } from "./_components/context/box";
 import { UserContextProvider } from "./_components/context/user-context";
 import { User as User2 } from "./_components/context/user";
+import { DomRef } from "./_components/ref/dom-ref";
+import { MutableRef } from "./_components/ref/mutable-ref";
+import { Counter as CounterClass } from "./_components/class/counter";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -87,6 +90,13 @@ export default function HomePage() {
         <UserContextProvider>
           <User2 />
         </UserContextProvider>
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <DomRef />
+        <MutableRef />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <CounterClass message="this is a timer with count: " />
       </div>
     </div>
   );
