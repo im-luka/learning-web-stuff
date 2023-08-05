@@ -22,6 +22,7 @@ import { Counter as CounterClass } from "./_components/class/counter";
 import { Private } from "./_components/auth/private";
 import { Profile } from "./_components/auth/profile";
 import { List } from "./_components/generics/list";
+import { RandomNumber } from "./_components/restriction/random-number";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -121,6 +122,9 @@ export default function HomePage() {
           ]}
           onClick={(item) => alert(`${item.name} is clicked`)}
         />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <RandomNumber value={10} isPositive />
       </div>
     </div>
   );
