@@ -23,6 +23,7 @@ import { Private } from "./_components/auth/private";
 import { Profile } from "./_components/auth/profile";
 import { List } from "./_components/generics/list";
 import { RandomNumber } from "./_components/restriction/random-number";
+import { Toast } from "./_components/template-literals/toast";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -125,6 +126,9 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <RandomNumber value={10} isPositive />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <Toast position="center" />
       </div>
     </div>
   );
