@@ -21,6 +21,7 @@ import { MutableRef } from "./_components/ref/mutable-ref";
 import { Counter as CounterClass } from "./_components/class/counter";
 import { Private } from "./_components/auth/private";
 import { Profile } from "./_components/auth/profile";
+import { List } from "./_components/generics/list";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -102,6 +103,24 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Private isLoggedIn component={Profile} />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        {/* <List
+          items={["a", "b", "c"]}
+          onClick={(item) => alert(`${item} is clicked`)}
+        />
+        <List
+          items={[1, 2, 3, 4, 5]}
+          onClick={(item) => alert(`${item} is clicked`)}
+        /> */}
+        <List
+          items={[
+            { id: 1, name: "mike" },
+            { id: 2, name: "john" },
+            { id: 3, name: "joe" },
+          ]}
+          onClick={(item) => alert(`${item.name} is clicked`)}
+        />
       </div>
     </div>
   );
