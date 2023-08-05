@@ -24,6 +24,8 @@ import { Profile } from "./_components/auth/profile";
 import { List } from "./_components/generics/list";
 import { RandomNumber } from "./_components/restriction/random-number";
 import { Toast } from "./_components/template-literals/toast";
+import { Button as ButtonHTML } from "./_components/html/button";
+import { Input as InputHTML } from "./_components/html/input";
 
 export default function HomePage() {
   const person: PersonType = {
@@ -129,6 +131,15 @@ export default function HomePage() {
       </div>
       <div className="py-5 border-b border-b-blue-400">
         <Toast position="center" />
+      </div>
+      <div className="py-5 border-b border-b-blue-400">
+        <ButtonHTML
+          variant="primary"
+          onClick={() => console.log("im clicked hey")}
+        >
+          COME ON & CLICK
+        </ButtonHTML>
+        <InputHTML />
       </div>
     </div>
   );
