@@ -1,7 +1,7 @@
 "use client";
 
 import { FC, useEffect } from "react";
-import { useForm, useFieldArray } from "react-hook-form";
+import { useForm, useFieldArray, FieldErrors } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
 type FormValues = {
@@ -65,6 +65,10 @@ export const YoutubeForm: FC = () => {
     console.log("form submitted", data);
   };
 
+  const onError = (errors: FieldErrors<FormValues>) => {
+    console.log("form errors", errors);
+  };
+
   const handleGetSocialValues = () => {
     console.log("these are socials", getValues("social"));
   };
@@ -88,7 +92,7 @@ export const YoutubeForm: FC = () => {
       <h2 className="mb-2 text-center">Watched value: {watch("username")}</h2>
       <form
         className="flex flex-col space-y-3"
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit, onError)}
         noValidate
       >
         <div className="flex flex-col">
