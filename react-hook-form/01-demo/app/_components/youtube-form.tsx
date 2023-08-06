@@ -27,6 +27,7 @@ export const YoutubeForm: FC = () => {
     watch,
     getValues,
     setValue,
+    reset,
   } = useForm<FormValues>({
     // defaultValues: async () => {
     //   const response = await fetch(
@@ -230,7 +231,7 @@ export const YoutubeForm: FC = () => {
             Submit
           </button>
         </div>
-        <div className="pt-5">
+        <div>
           <button
             type="button"
             className="w-full bg-yellow-300 text-black"
@@ -239,13 +240,22 @@ export const YoutubeForm: FC = () => {
             Get Social Values
           </button>
         </div>
-        <div className="pt-5">
+        <div>
           <button
             type="button"
             className="w-full bg-green-300 text-black"
             onClick={handleSetChannelValue}
           >
             Set Channel Value
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            className="w-full bg-violet-400"
+            onClick={() => reset()}
+          >
+            Reset Form
           </button>
         </div>
       </form>
