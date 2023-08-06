@@ -19,7 +19,7 @@ type FormValues = {
 };
 
 export const YoutubeForm: FC = () => {
-  const { control, register, handleSubmit, formState, watch } =
+  const { control, register, handleSubmit, formState, watch, getValues } =
     useForm<FormValues>({
       // defaultValues: async () => {
       //   const response = await fetch(
@@ -55,6 +55,10 @@ export const YoutubeForm: FC = () => {
 
   const onSubmit = (data: FormValues) => {
     console.log("form submitted", data);
+  };
+
+  const handleGetValues = () => {
+    console.log("these are socials", getValues("social"));
   };
 
   useEffect(() => {
@@ -186,6 +190,15 @@ export const YoutubeForm: FC = () => {
         </div>
         <div className="pt-5">
           <button className="w-full">Submit</button>
+        </div>
+        <div className="pt-5">
+          <button
+            type="button"
+            className="w-full bg-yellow-300 text-black"
+            onClick={handleGetValues}
+          >
+            Get All Values
+          </button>
         </div>
       </form>
     </div>
