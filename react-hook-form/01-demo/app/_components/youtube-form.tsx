@@ -4,12 +4,25 @@ import { FC } from "react";
 import { useForm } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
+type FormValues = {
+  username: string;
+  email: string;
+  channel: string;
+};
+
 export const YoutubeForm: FC = () => {
-  const { register, control } = useForm();
+  const { control, register, handleSubmit } = useForm<FormValues>();
+
+  const onSubmit = (data: FormValues) => {
+    console.log("form submitted", data);
+  };
 
   return (
     <div>
-      <form className="flex flex-col space-y-3">
+      <form
+        className="flex flex-col space-y-3"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="flex flex-col">
           <label htmlFor="username">Username</label>
           <input type="text" id="username" {...register("username")} />
