@@ -12,16 +12,21 @@ type FormValues = {
 
 export const YoutubeForm: FC = () => {
   const { control, register, handleSubmit, formState } = useForm<FormValues>({
-    defaultValues: async () => {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/users/1"
-      );
-      const data = await response.json();
-      return {
-        username: "Batman",
-        email: data.email,
-        channel: "",
-      };
+    // defaultValues: async () => {
+    //   const response = await fetch(
+    //     "https://jsonplaceholder.typicode.com/users/1"
+    //   );
+    //   const data = await response.json();
+    //   return {
+    //     username: "Batman",
+    //     email: data.email,
+    //     channel: "",
+    //   };
+    // },
+    defaultValues: {
+      username: "",
+      email: "",
+      channel: "",
     },
   });
   const { errors } = formState;
