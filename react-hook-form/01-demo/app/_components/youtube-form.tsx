@@ -14,6 +14,8 @@ type FormValues = {
   };
   phones: string[];
   telephones: { number: string }[];
+  age: number;
+  date: Date;
 };
 
 export const YoutubeForm: FC = () => {
@@ -39,6 +41,8 @@ export const YoutubeForm: FC = () => {
       },
       phones: ["", ""],
       telephones: [{ number: "" }],
+      age: 0,
+      date: new Date(),
     },
   });
   const { errors } = formState;
@@ -142,6 +146,36 @@ export const YoutubeForm: FC = () => {
               Add telephone
             </button>
           </div>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="age">Age</label>
+          <input
+            type="number"
+            id="age"
+            {...register("age", {
+              valueAsNumber: true,
+              required: {
+                value: true,
+                message: "Age is required",
+              },
+            })}
+          />
+          <p className="text-sm text-red-500">{errors.age?.message}</p>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="channel">Date of Birth</label>
+          <input
+            type="date"
+            id="date"
+            {...register("date", {
+              valueAsDate: true,
+              required: {
+                value: true,
+                message: "Date of birth is required",
+              },
+            })}
+          />
+          <p className="text-sm text-red-500">{errors.date?.message}</p>
         </div>
         <div className="pt-5">
           <button className="w-full">Submit</button>
