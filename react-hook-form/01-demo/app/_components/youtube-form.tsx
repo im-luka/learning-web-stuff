@@ -28,6 +28,7 @@ export const YoutubeForm: FC = () => {
     getValues,
     setValue,
     reset,
+    trigger,
   } = useForm<FormValues>({
     // defaultValues: async () => {
     //   const response = await fetch(
@@ -264,6 +265,15 @@ export const YoutubeForm: FC = () => {
             onClick={() => reset()}
           >
             Reset Form
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            className="w-full bg-rose-500"
+            onClick={() => trigger(["username", "channel"])}
+          >
+            Validate
           </button>
         </div>
       </form>
