@@ -53,7 +53,8 @@ export const YoutubeForm: FC = () => {
       date: new Date(),
     },
   });
-  const { errors } = formState;
+  const { errors, touchedFields, dirtyFields, isDirty } = formState;
+  console.log({ touchedFields, dirtyFields, isDirty });
 
   const { fields, append, remove } = useFieldArray({
     name: "telephones",
