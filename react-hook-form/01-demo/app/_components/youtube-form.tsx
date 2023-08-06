@@ -53,6 +53,7 @@ export const YoutubeForm: FC = () => {
       age: 0,
       date: new Date(),
     },
+    mode: "onChange",
   });
   const {
     errors,
