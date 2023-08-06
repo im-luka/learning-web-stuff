@@ -11,7 +11,8 @@ type FormValues = {
 };
 
 export const YoutubeForm: FC = () => {
-  const { control, register, handleSubmit } = useForm<FormValues>();
+  const { control, register, handleSubmit, formState } = useForm<FormValues>();
+  const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
     console.log("form submitted", data);
@@ -31,6 +32,7 @@ export const YoutubeForm: FC = () => {
             id="username"
             {...register("username", { required: "Username is required." })}
           />
+          <p className="text-sm text-red-500">{errors.username?.message}</p>
         </div>
         <div className="flex flex-col">
           <label htmlFor="email">Email</label>
@@ -45,6 +47,7 @@ export const YoutubeForm: FC = () => {
               },
             })}
           />
+          <p className="text-sm text-red-500">{errors.email?.message}</p>
         </div>
         <div className="flex flex-col">
           <label htmlFor="channel">Channel</label>
@@ -58,6 +61,7 @@ export const YoutubeForm: FC = () => {
               },
             })}
           />
+          <p className="text-sm text-red-500">{errors.channel?.message}</p>
         </div>
         <div className="pt-5">
           <button className="w-full">Submit</button>
