@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <main className="max-w-[1280px] mx-auto p-4 border border-slate-500">
+        <main className="max-w-[700px] min-h-[90vh] mx-auto p-4 border border-slate-500">
           {children}
         </main>
       </body>
