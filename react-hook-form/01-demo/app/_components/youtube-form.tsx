@@ -11,7 +11,19 @@ type FormValues = {
 };
 
 export const YoutubeForm: FC = () => {
-  const { control, register, handleSubmit, formState } = useForm<FormValues>();
+  const { control, register, handleSubmit, formState } = useForm<FormValues>({
+    defaultValues: async () => {
+      const response = await fetch(
+        "https://jsonplaceholder.typicode.com/users/1"
+      );
+      const data = await response.json();
+      return {
+        username: "Batman",
+        email: data.email,
+        channel: "",
+      };
+    },
+  });
   const { errors } = formState;
 
   const onSubmit = (data: FormValues) => {
@@ -20,6 +32,7 @@ export const YoutubeForm: FC = () => {
 
   return (
     <div>
+      <DevTool control={control} />
       <form
         className="flex flex-col space-y-3"
         onSubmit={handleSubmit(onSubmit)}
@@ -75,7 +88,6 @@ export const YoutubeForm: FC = () => {
           <button className="w-full">Submit</button>
         </div>
       </form>
-      <DevTool control={control} />
     </div>
   );
 };
