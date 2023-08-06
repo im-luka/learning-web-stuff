@@ -2,9 +2,10 @@
 
 import { FC } from "react";
 import { useForm } from "react-hook-form";
+import { DevTool } from "@hookform/devtools";
 
 export const YoutubeForm: FC = () => {
-  const { register } = useForm();
+  const { register, control } = useForm();
 
   return (
     <div>
@@ -25,6 +26,7 @@ export const YoutubeForm: FC = () => {
           <button className="w-full">Submit</button>
         </div>
       </form>
+      <DevTool control={control} />
     </div>
   );
 };
