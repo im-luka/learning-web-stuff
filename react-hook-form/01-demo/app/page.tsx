@@ -1,5 +1,6 @@
 import { YoutubeForm } from "./_components/youtube-form";
 import { YupYoutubeForm } from "./_components/yup-youtube-form";
+import { ZodYoutubeForm } from "./_components/zod-youtube-form";
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       </h1>
       <YoutubeForm />
       <YupYoutubeForm />
+      <ZodYoutubeForm />
     </div>
   );
 }
