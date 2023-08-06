@@ -1,6 +1,6 @@
 "use client";
 
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { useForm, useFieldArray } from "react-hook-form";
 import { DevTool } from "@hookform/devtools";
 
@@ -19,32 +19,33 @@ type FormValues = {
 };
 
 export const YoutubeForm: FC = () => {
-  const { control, register, handleSubmit, formState } = useForm<FormValues>({
-    // defaultValues: async () => {
-    //   const response = await fetch(
-    //     "https://jsonplaceholder.typicode.com/users/1"
-    //   );
-    //   const data = await response.json();
-    //   return {
-    //     username: "Batman",
-    //     email: data.email,
-    //     channel: "",
-    //   };
-    // },
-    defaultValues: {
-      username: "",
-      email: "",
-      channel: "",
-      social: {
-        twitter: "",
-        facebook: "",
+  const { control, register, handleSubmit, formState, watch } =
+    useForm<FormValues>({
+      // defaultValues: async () => {
+      //   const response = await fetch(
+      //     "https://jsonplaceholder.typicode.com/users/1"
+      //   );
+      //   const data = await response.json();
+      //   return {
+      //     username: "Batman",
+      //     email: data.email,
+      //     channel: "",
+      //   };
+      // },
+      defaultValues: {
+        username: "",
+        email: "",
+        channel: "",
+        social: {
+          twitter: "",
+          facebook: "",
+        },
+        phones: ["", ""],
+        telephones: [{ number: "" }],
+        age: 0,
+        date: new Date(),
       },
-      phones: ["", ""],
-      telephones: [{ number: "" }],
-      age: 0,
-      date: new Date(),
-    },
-  });
+    });
   const { errors } = formState;
 
   const { fields, append, remove } = useFieldArray({
@@ -56,9 +57,15 @@ export const YoutubeForm: FC = () => {
     console.log("form submitted", data);
   };
 
+  useEffect(() => {
+    const subscription = watch((value) => console.log(value));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+
   return (
     <div>
       <DevTool control={control} />
+      <h2 className="mb-2 text-center">Watched value: {watch("username")}</h2>
       <form
         className="flex flex-col space-y-3"
         onSubmit={handleSubmit(onSubmit)}
