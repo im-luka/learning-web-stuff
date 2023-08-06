@@ -53,7 +53,7 @@ export const YoutubeForm: FC = () => {
       date: new Date(),
     },
   });
-  const { errors, touchedFields, dirtyFields, isDirty } = formState;
+  const { errors, touchedFields, dirtyFields, isDirty, isValid } = formState;
   console.log({ touchedFields, dirtyFields, isDirty });
 
   const { fields, append, remove } = useFieldArray({
@@ -212,7 +212,12 @@ export const YoutubeForm: FC = () => {
           <p className="text-sm text-red-500">{errors.date?.message}</p>
         </div>
         <div className="pt-5">
-          <button className="w-full">Submit</button>
+          <button
+            disabled={!isDirty || !isValid}
+            className="w-full disabled:bg-slate-700 disabled:border-slate-900 disabled:hover:text-white"
+          >
+            Submit
+          </button>
         </div>
         <div className="pt-5">
           <button
