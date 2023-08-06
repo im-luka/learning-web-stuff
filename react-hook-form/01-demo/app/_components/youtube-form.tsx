@@ -19,33 +19,40 @@ type FormValues = {
 };
 
 export const YoutubeForm: FC = () => {
-  const { control, register, handleSubmit, formState, watch, getValues } =
-    useForm<FormValues>({
-      // defaultValues: async () => {
-      //   const response = await fetch(
-      //     "https://jsonplaceholder.typicode.com/users/1"
-      //   );
-      //   const data = await response.json();
-      //   return {
-      //     username: "Batman",
-      //     email: data.email,
-      //     channel: "",
-      //   };
-      // },
-      defaultValues: {
-        username: "",
-        email: "",
-        channel: "",
-        social: {
-          twitter: "",
-          facebook: "",
-        },
-        phones: ["", ""],
-        telephones: [{ number: "" }],
-        age: 0,
-        date: new Date(),
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState,
+    watch,
+    getValues,
+    setValue,
+  } = useForm<FormValues>({
+    // defaultValues: async () => {
+    //   const response = await fetch(
+    //     "https://jsonplaceholder.typicode.com/users/1"
+    //   );
+    //   const data = await response.json();
+    //   return {
+    //     username: "Batman",
+    //     email: data.email,
+    //     channel: "",
+    //   };
+    // },
+    defaultValues: {
+      username: "",
+      email: "",
+      channel: "",
+      social: {
+        twitter: "",
+        facebook: "",
       },
-    });
+      phones: ["", ""],
+      telephones: [{ number: "" }],
+      age: 0,
+      date: new Date(),
+    },
+  });
   const { errors } = formState;
 
   const { fields, append, remove } = useFieldArray({
@@ -59,6 +66,14 @@ export const YoutubeForm: FC = () => {
 
   const handleGetValues = () => {
     console.log("these are socials", getValues("social"));
+  };
+
+  const handleSetChannelValue = () => {
+    setValue("channel", "luka bazooka", {
+      shouldValidate: true,
+      shouldDirty: true,
+      shouldTouch: true,
+    });
   };
 
   useEffect(() => {
@@ -198,6 +213,15 @@ export const YoutubeForm: FC = () => {
             onClick={handleGetValues}
           >
             Get All Values
+          </button>
+        </div>
+        <div className="pt-5">
+          <button
+            type="button"
+            className="w-full bg-green-300 text-black"
+            onClick={handleSetChannelValue}
+          >
+            Set Channel Value
           </button>
         </div>
       </form>
