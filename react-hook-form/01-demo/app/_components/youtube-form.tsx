@@ -8,6 +8,10 @@ type FormValues = {
   username: string;
   email: string;
   channel: string;
+  social: {
+    twitter: string;
+    facebook: string;
+  };
 };
 
 export const YoutubeForm: FC = () => {
@@ -27,6 +31,10 @@ export const YoutubeForm: FC = () => {
       username: "",
       email: "",
       channel: "",
+      social: {
+        twitter: "",
+        facebook: "",
+      },
     },
   });
   const { errors } = formState;
@@ -88,6 +96,14 @@ export const YoutubeForm: FC = () => {
             })}
           />
           <p className="text-sm text-red-500">{errors.channel?.message}</p>
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="twitter">Twitter</label>
+          <input type="text" id="twitter" {...register("social.twitter")} />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="facebook">Facebook</label>
+          <input type="text" id="facebook" {...register("social.facebook")} />
         </div>
         <div className="pt-5">
           <button className="w-full">Submit</button>
