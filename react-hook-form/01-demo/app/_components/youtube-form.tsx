@@ -12,6 +12,7 @@ type FormValues = {
     twitter: string;
     facebook: string;
   };
+  phones: string[];
 };
 
 export const YoutubeForm: FC = () => {
@@ -35,6 +36,7 @@ export const YoutubeForm: FC = () => {
         twitter: "",
         facebook: "",
       },
+      phones: ["", ""],
     },
   });
   const { errors } = formState;
@@ -104,6 +106,14 @@ export const YoutubeForm: FC = () => {
         <div className="flex flex-col">
           <label htmlFor="facebook">Facebook</label>
           <input type="text" id="facebook" {...register("social.facebook")} />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="primary-phone">Primary Phone</label>
+          <input type="text" id="primary-phone" {...register("phones.0")} />
+        </div>
+        <div className="flex flex-col">
+          <label htmlFor="secondary-phone">Secondary Phone</label>
+          <input type="text" id="secondary-phone" {...register("phones.1")} />
         </div>
         <div className="pt-5">
           <button className="w-full">Submit</button>
