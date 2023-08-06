@@ -1,6 +1,11 @@
+"use client";
+
 import { FC } from "react";
+import { useForm } from "react-hook-form";
 
 export const YoutubeForm: FC = () => {
+  const form = useForm();
+
   return (
     <div>
       <form className="flex flex-col space-y-3">
