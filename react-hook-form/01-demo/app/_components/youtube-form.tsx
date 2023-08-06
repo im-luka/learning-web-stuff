@@ -40,7 +40,7 @@ export const YoutubeForm: FC = () => {
     //   };
     // },
     defaultValues: {
-      username: "",
+      username: "Joker",
       email: "",
       channel: "",
       social: {
@@ -65,7 +65,7 @@ export const YoutubeForm: FC = () => {
     console.log("form submitted", data);
   };
 
-  const handleGetValues = () => {
+  const handleGetSocialValues = () => {
     console.log("these are socials", getValues("social"));
   };
 
@@ -96,7 +96,10 @@ export const YoutubeForm: FC = () => {
           <input
             type="text"
             id="username"
-            {...register("username", { required: "Username is required." })}
+            {...register("username", {
+              required: "Username is required.",
+              disabled: !watch("channel"),
+            })}
           />
           <p className="text-sm text-red-500">{errors.username?.message}</p>
         </div>
@@ -211,9 +214,9 @@ export const YoutubeForm: FC = () => {
           <button
             type="button"
             className="w-full bg-yellow-300 text-black"
-            onClick={handleGetValues}
+            onClick={handleGetSocialValues}
           >
-            Get All Values
+            Get Social Values
           </button>
         </div>
         <div className="pt-5">
