@@ -22,7 +22,7 @@ export default function HomePage() {
         ))}
       </ul>
 
-      <button onClick={handleClick}>Like ({likes})</button>
+      <button onClick={handleClick}>Like ({likes}) 👍🏼</button>
     </div>
   );
 }
