@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { schema } from "./registration-schema";
 import { useFormState } from "react-dom";
+import { validateZipCode } from "./validateZipCode";
 
 export const RegistrationForm: FC<{
   onDataAction: (data: z.infer<typeof schema>) => Promise<{
@@ -128,6 +129,20 @@ export const RegistrationForm: FC<{
                 <Input placeholder="" {...field} />
               </FormControl>
               <FormDescription>Your email address.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="zipCode"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Zip Code</FormLabel>
+              <FormControl>
+                <Input placeholder="" {...field} />
+              </FormControl>
+              <FormDescription>Your zip code (NNNNNN).</FormDescription>
               <FormMessage />
             </FormItem>
           )}
